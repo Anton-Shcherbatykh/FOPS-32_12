@@ -16,7 +16,7 @@ sudo mysql -u root
 
 1.2. Создайте учётную запись sys_temp.
 ```bash
-CREATE USER 'sys_temp'@'localhost' IDENTIFIED BY '1234567';
+CREATE USER 'sys_temp'@'localhost' IDENTIFIED BY '55555';
 ```
 ![alt text](Pictures/Picture3.jpg)
 
