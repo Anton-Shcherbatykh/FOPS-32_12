@@ -15,6 +15,10 @@ sudo mysql -u root
 ![alt text](Pictures/Picture2.jpg)
 
 1.2. Создайте учётную запись sys_temp.
+```bash
+CREATE USER 'sys_temp'@'localhost' IDENTIFIED BY '1234567';
+```
+![alt text](Pictures/Picture3.jpg)
 
 1.3. Выполните запрос на получение списка пользователей в базе данных. (скриншот)
 
