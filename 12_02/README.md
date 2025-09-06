@@ -48,7 +48,10 @@ SELECT user();
 ALTER USER 'sys_temp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 ![alt text](Pictures/Picture9.jpg)
+
 1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
+
+![alt text](Pictures/Picture10.jpg)
 
 1.7. Восстановите дамп в базу данных.
 
