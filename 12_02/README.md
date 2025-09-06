@@ -45,8 +45,9 @@ SELECT user();
 ![alt text](Pictures/Picture8.jpg)
 Для смены типа аутентификации с sha2 используйте запрос:
 ```bash
-ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ALTER USER 'sys_temp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
+![alt text](Pictures/Picture9.jpg)
 1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
 
 1.7. Восстановите дамп в базу данных.
