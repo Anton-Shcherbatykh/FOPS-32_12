@@ -32,7 +32,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'localhost' WITH GRANT OPTION;
 ![alt text](Pictures/Picture5.jpg)
 
 1.5. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
-
+```bash
+SELECT * FROM information_schema.user_privileges WHERE GRANTEE="'sys_temp'@'localhost'";
+```
+![alt text](Pictures/Picture6.jpg)
+![alt text](Pictures/Picture7.jpg)
 1.6. Переподключитесь к базе данных от имени sys_temp.
 
 Для смены типа аутентификации с sha2 используйте запрос:
