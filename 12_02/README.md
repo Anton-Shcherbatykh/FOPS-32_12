@@ -21,7 +21,10 @@ CREATE USER 'sys_temp'@'localhost' IDENTIFIED BY '55555';
 ![alt text](Pictures/Picture3.jpg)
 
 1.3. Выполните запрос на получение списка пользователей в базе данных. (скриншот)
-
+```bash
+SELECT user FROM mysql.user;
+```
+![alt text](Pictures/Picture4.jpg)
 1.4. Дайте все права для пользователя sys_temp.
 
 1.5. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
