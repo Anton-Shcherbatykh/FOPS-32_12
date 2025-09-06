@@ -26,6 +26,10 @@ SELECT user FROM mysql.user;
 ```
 ![alt text](Pictures/Picture4.jpg)
 1.4. Дайте все права для пользователя sys_temp.
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'localhost' WITH GRANT OPTION;
+```
+![alt text](Pictures/Picture5.jpg)
 
 1.5. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
 
