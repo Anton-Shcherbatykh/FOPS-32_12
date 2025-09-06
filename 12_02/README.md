@@ -38,7 +38,11 @@ SELECT * FROM information_schema.user_privileges WHERE GRANTEE="'sys_temp'@'loca
 ![alt text](Pictures/Picture6.jpg)
 ![alt text](Pictures/Picture7.jpg)
 1.6. Переподключитесь к базе данных от имени sys_temp.
-
+```bash
+SYSTEM mysql -u sys_temp -p
+SELECT user();
+```
+![alt text](Pictures/Picture8.jpg)
 Для смены типа аутентификации с sha2 используйте запрос:
 ```bash
 ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
