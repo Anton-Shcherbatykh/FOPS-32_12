@@ -12,9 +12,22 @@ WHERE district LIKE 'K%a' AND district NOT LIKE '% %';
 
 ### Задание 2
 Получите из таблицы платежей за прокат фильмов информацию по платежам, которые выполнялись в промежуток с 15 июня 2005 года по 18 июня 2005 года включительно и стоимость которых превышает 10.00.
+#### *Ответ*
+```bash
+SELECT payment_date, amount
+FROM payment
+WHERE amount > 10 AND payment_date BETWEEN '2005-06-15 00:00:00' AND '2005-06-18 23:59:59';
+```
 
 ### Задание 3
 Получите последние пять аренд фильмов.
+#### *Ответ*
+```bash
+SELECT rental_date
+FROM rental
+ORDER BY rental_date DESC
+LIMIT 5;
+```
 
 ### Задание 4
 Одним запросом получите активных покупателей, имена которых Kelly или Willie.
@@ -22,3 +35,9 @@ WHERE district LIKE 'K%a' AND district NOT LIKE '% %';
 Сформируйте вывод в результат таким образом: 
 - все буквы в фамилии и имени из верхнего регистра переведите в нижний регистр,
 - замените буквы 'll' в именах на 'pp'.
+- #### *Ответ*
+```bash
+SELECT CONCAT((REPLACE(LOWER(first_name), 'll', 'pp')), " ", LOWER(last_name)) AS 'Имя и фамилия' , active
+FROM customer
+WHERE active = 1 AND first_name IN ('Kelly', 'Willie');
+```
