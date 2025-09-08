@@ -18,7 +18,7 @@ SELECT payment_date, amount
 FROM payment
 WHERE amount > 10 AND payment_date BETWEEN '2005-06-15 00:00:00' AND '2005-06-18 23:59:59';
 ```
-
+![alt text](Pictures/Picture2.jpg)
 ### Задание 3
 Получите последние пять аренд фильмов.
 #### *Ответ*
@@ -28,7 +28,7 @@ FROM rental
 ORDER BY rental_date DESC
 LIMIT 5;
 ```
-
+![alt text](Pictures/Picture3.jpg)
 ### Задание 4
 Одним запросом получите активных покупателей, имена которых Kelly или Willie.
 
@@ -41,3 +41,4 @@ SELECT CONCAT((REPLACE(LOWER(first_name), 'll', 'pp')), " ", LOWER(last_name)) A
 FROM customer
 WHERE active = 1 AND first_name IN ('Kelly', 'Willie');
 ```
+![alt text](Pictures/Picture4.jpg)
