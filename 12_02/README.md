@@ -54,6 +54,14 @@ ALTER USER 'sys_temp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 ![alt text](Pictures/Picture10.jpg)
 
 1.7. Восстановите дамп в базу данных.
+```bash
+source /home/shcherbatykh/sakila-db/sakila-schema.sql
+source /home/shcherbatykh/sakila-db/sakila-data.sql
+SHOW DATABASES;
+```
+![alt text](Pictures/Picture11.jpg)
+![alt text](Pictures/Picture12.jpg)
+![alt text](Pictures/Picture13.jpg)
 
 1.8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
 
