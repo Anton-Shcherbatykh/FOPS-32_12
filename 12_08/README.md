@@ -52,6 +52,17 @@ pg_dump -Fc sakila > sakiladb.dump
 pg_dump -U username sakila > sakiladb.sql
 ```
 
+[Ссылка на документацию PostgreSQL, pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)
+
+Команда восстановления БД:
+
+```bash
+pg_restore -d sakila sakiladb.sql
+```
+[Ссылка на документацию PostgreSQL, pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html)
+
+
+2.1.* 
 
 
 
