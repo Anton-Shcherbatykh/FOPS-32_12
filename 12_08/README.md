@@ -62,7 +62,7 @@ pg_restore -d sakila sakiladb.sql
 [Ссылка на документацию PostgreSQL, pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html)
 
 
-2.1.* 
+2.1.* Выбор способа автоматизации зависит от требований: для небольших проектов достаточно bash-скриптов + cron, для production-сред лучше использовать **pgBackRest** (специализированный инструмент для резервного копирования и восстановления PostgreSQL) или **Barman** (Backup and Recovery Manager — утилита для резервного копирования и восстановления серверов PostgreSQL с открытым исходным кодом. Написана на Python, предназначена для физического бэкапа PostgreSQL).
 
 
 
