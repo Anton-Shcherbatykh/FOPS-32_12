@@ -34,6 +34,7 @@
 
 ### Задание 2. PostgreSQL
 2.1. С помощью официальной документации приведите пример команды резервирования данных и восстановления БД (pgdump/pgrestore).
+
 2.1.* Возможно ли автоматизировать этот процесс? Если да, то как?
 
 *Приведите ответ в свободной форме.*
@@ -66,18 +67,3 @@ pg_restore -d sakila sakiladb.sql
 
 
 2.1.* Выбор способа автоматизации зависит от требований: для небольших проектов достаточно bash-скриптов + cron, для production-сред лучше использовать **pgBackRest** (специализированный инструмент для резервного копирования и восстановления PostgreSQL) или **Barman** (Backup and Recovery Manager — утилита для резервного копирования и восстановления серверов PostgreSQL с открытым исходным кодом. Написана на Python, предназначена для физического бэкапа PostgreSQL).
-
-
-
-
-
-```bash
-SELECT CONCAT(s.first_name , " ", s.last_name) AS 'Сотрудник магазина', cm.city AS 'Город нахождения магазина', COUNT(c.customer_id) AS 'Количество покупателей'
-FROM staff AS s
-JOIN address AS a ON a.address_id = s.address_id
-JOIN city AS cm ON cm.city_id = a.city_id
-JOIN store AS st ON st.store_id = s.store_id
-JOIN customer AS c ON c.store_id = s.store_id
-GROUP BY staff_id
-HAVING COUNT(c.customer_id) > 300;
-```
