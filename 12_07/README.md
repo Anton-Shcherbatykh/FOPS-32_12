@@ -121,3 +121,18 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
+### Детальный план реализации
+1. Вертикальный шардинг - разделение по таблицам
+   
+**Шард USERS (Сервер 1):**
+
+``` sql
+-- Таблица пользователей
+CREATE TABLE users (
+    user_id BIGINT PRIMARY KEY,
+    email VARCHAR(255),
+    name VARCHAR(100),
+    registration_date DATETIME,
+    country_code VARCHAR(3)
+) sharding_key = user_id;
+```
