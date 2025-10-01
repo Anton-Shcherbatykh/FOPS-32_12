@@ -148,4 +148,4 @@ mysql> SELECT * FROM city ORDER BY ID DESC LIMIT 1;
 ```
 ![alt text](Pictures/Pic10.jpg)
 
-***Репликация master - slave настроена и работает успешно**
+**Репликация master - slave настроена и работает успешно**
