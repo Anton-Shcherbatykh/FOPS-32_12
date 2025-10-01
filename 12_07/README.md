@@ -205,3 +205,39 @@ CREATE TABLE stores (
 - Шард ST_S1: store_id % 2 = 0
 
 - Шард ST_S2: store_id % 2 = 1
+
+### Режимы работы серверов
+
+**Конфигурация репликации**
+```
+┌────────────────┐    ┌────────────────┐
+│   MASTER       │    │    SLAVE       │
+│   (Read/Write) │◄──►│   (Read Only)  │
+└────────────────┘    └────────────────┘
+      ▲                      ▲
+      │                      │
+      └───── Load Balancer ──┘
+```
+
+Каждый шард работает в режиме Master-Slave:
+
+- Master: Принимает запросы на запись (INSERT, UPDATE, DELETE)
+
+- Slave: Принимает запросы на чтение (SELECT) - несколько реплик
+
+Координатор шардинга
+``` bash
+class ShardingCoordinator:
+    def get_shard_connection(self, table_name, shard_key):
+        if table_name == "users":
+            shard_num = shard_key % 4
+            return f"user_shard_{shard_num}"
+        
+        elif table_name == "books":
+            shard_num = shard_key % 8
+            return f"book_shard_{shard_num}"
+            
+        elif table_name == "stores":
+            shard_num = shard_key % 2
+            return f"store_shard_{shard_num}"
+```
