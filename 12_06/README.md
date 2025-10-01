@@ -143,7 +143,6 @@ mysql> INSERT INTO city (Name, CountryCode, District, Population)  VALUES ('Test
 docker exec -it replication-slave mysql -uroot -p
 mysql> SHOW databases;
 mysql> USE world;
-mysql> SHOW databases;
 mysql> SHOW tables;
 mysql> SELECT * FROM city ORDER BY ID DESC LIMIT 1;
 ```
