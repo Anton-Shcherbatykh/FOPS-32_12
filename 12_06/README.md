@@ -58,3 +58,21 @@ SHOW GRANTS FOR replication@'%';
 ```
 
 ![alt text](Pictures/Pic2.jpg)
+
+Вносим изменения в конфигурацию на master (папка etc) в файл my.cnf-> секция [mysqld] и добавляем следующие параметры:
+
+``` bash
+server_id = 1
+log_bin = mysql-bin
+``` 
+
+После изменения конфигурации сервера потребуется перезагрузка. После перезагрузки заходим в контейнер и проверяем состояние:
+
+``` bash
+docker restart replication-master
+
+docker exec -it replication-master mysql
+mysql> SHOW MASTER STATUS;
+```
+
+![alt text](Pictures/Pic6.jpg)
