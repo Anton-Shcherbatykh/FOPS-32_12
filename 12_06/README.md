@@ -51,4 +51,10 @@ docker exec -it replication-master mysql -uroot -p
 mysql> CREATE USER 'replication'@'%';
 mysql> GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';
 ```
+
+Проверим права пользователя
+``` bash
+SHOW GRANTS FOR replication@'%';
+```
+
 ![alt text](Pictures/Pic2.jpg)
