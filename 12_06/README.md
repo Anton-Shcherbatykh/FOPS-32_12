@@ -77,3 +77,36 @@ mysql> SHOW MASTER STATUS;
 ```
 ![alt text](Pictures/Pic3.jpg)
 
+После этого вносим изменения на slave  в конфигурационный файл my.cnf-> секция [mysqld] и добавляем следующие параметры:
+
+``` bash
+log_bin = mysql-bin
+server_id = 2
+relay-log = /var/lib/mysql/mysql-relay-bin
+relay-log-index = /var/lib/mysql/mysql-relay-bin.index
+read_only = 1
+```
+![alt text](Pictures/Pic5.jpg)
+
+После этого обязательно перезагружаем slave
+``` bash
+docker restart replication-slave
+```
+
+Следующим шагом требуется прописать в базе данных на сервере slave, кто является master и данные *File* и *Position*, полученные а результате выполнения команды **SHOW MASTER STATUS;** на сервере master
+``` bash
+docker exec -it replication-slave mysql
+mysql> CHANGE MASTER TO
+MASTER_HOST='replication-master',
+MASTER_USER='replication',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=158;
+```
+
+Далее запускаем журнал ретрансляции и проверим статус
+``` bash
+mysql> START REPLICA;
+mysql> SHOW SLAVE STATUS\G;
+```
+
+![alt text](Pictures/Pic4.jpg)
