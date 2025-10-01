@@ -72,7 +72,7 @@ log_bin = mysql-bin
 ``` bash
 docker restart replication-master
 
-docker exec -it replication-master mysql
+docker exec -it replication-master mysql -uroot -p
 mysql> SHOW MASTER STATUS;
 ```
 ![alt text](Pictures/Pic3.jpg)
@@ -95,7 +95,7 @@ docker restart replication-slave
 
 Следующим шагом требуется прописать в базе данных на сервере slave, кто является master и данные *File* и *Position*, полученные а результате выполнения команды **SHOW MASTER STATUS;** на сервере master
 ``` bash
-docker exec -it replication-slave mysql
+docker exec -it replication-slave mysql -uroot -p
 mysql> CHANGE MASTER TO
 MASTER_HOST='replication-master',
 MASTER_USER='replication',
@@ -110,3 +110,42 @@ mysql> SHOW SLAVE STATUS\G;
 ```
 
 ![alt text](Pictures/Pic4.jpg)
+
+Тестирование работы репликации master - slave
+
+Меняем данные на  сервере master
+
+``` bash
+docker exec -it replication-master mysql -uroot -p
+mysql> CREATE database world;
+mysql> SHOW databases;
+mysql> USE world;
+```
+![alt text](Pictures/Pic7.jpg)
+
+Создаём таблицу и выполняем **INSERT**
+``` bash
+mysql> CREATE TABLE city (
+       ID INT AUTO_INCREMENT PRIMARY KEY,
+       Name VARCHAR(35) NOT NULL,
+       CountryCode CHAR(3) NOT NULL,
+       District VARCHAR(20) NOT NULL,
+       Population INT NOT NULL
+);
+mysql> INSERT INTO city (Name, CountryCode, District, Population)  VALUES ('Test-12-6-HW', 'VLG', 'Moscow', 135000);
+```
+
+![alt text](Pictures/Pic8.jpg)
+
+Проверяем на сервере slave
+
+``` bash
+docker exec -it replication-slave mysql -uroot -p
+mysql> SHOW databases;
+mysql> USE world;
+mysql> SHOW databases;
+mysql> SHOW tables;
+mysql> SELECT * FROM city ORDER BY ID DESC LIMIT 1;
+```
+![alt text](Pictures/Pic10.jpg)
+
