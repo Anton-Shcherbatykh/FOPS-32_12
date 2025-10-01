@@ -136,3 +136,34 @@ CREATE TABLE users (
     country_code VARCHAR(3)
 ) sharding_key = user_id;
 ```
+**Шард BOOKS (Сервер 2):**
+``` sql
+-- Таблица книг
+CREATE TABLE books (
+    book_id BIGINT PRIMARY KEY,
+    title VARCHAR(500),
+    author VARCHAR(200),
+    genre VARCHAR(50),
+    price DECIMAL(10,2),
+    publisher_id BIGINT
+) sharding_key = book_id;
+
+-- Таблица инвентаря (принадлежит к книгам)
+CREATE TABLE inventory (
+    inventory_id BIGINT,
+    book_id BIGINT,
+    store_id BIGINT,
+    quantity INT
+) sharding_key = book_id;
+```
+**Шард STORES (Сервер 3):**
+``` sql
+-- Таблица магазинов
+CREATE TABLE stores (
+    store_id BIGINT PRIMARY KEY,
+    name VARCHAR(200),
+    location VARCHAR(300),
+    manager_id BIGINT,
+    country_code VARCHAR(3)
+) sharding_key = store_id;
+```
