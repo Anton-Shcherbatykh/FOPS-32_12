@@ -64,7 +64,8 @@ SHOW GRANTS FOR replication@'%';
 ``` bash
 server_id = 1
 log_bin = mysql-bin
-``` 
+```
+![alt text](Pictures/Pic6.jpg)
 
 После изменения конфигурации сервера потребуется перезагрузка. После перезагрузки заходим в контейнер и проверяем состояние:
 
@@ -74,5 +75,5 @@ docker restart replication-master
 docker exec -it replication-master mysql
 mysql> SHOW MASTER STATUS;
 ```
+![alt text](Pictures/Pic3.jpg)
 
-![alt text](Pictures/Pic6.jpg)
