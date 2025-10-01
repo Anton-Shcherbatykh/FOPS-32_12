@@ -123,7 +123,7 @@ mysql> USE world;
 ```
 ![alt text](Pictures/Pic7.jpg)
 
-Создаём таблицу и выполняем **INSERT**
+Создаём таблицу **city** и выполняем **INSERT**
 ``` bash
 mysql> CREATE TABLE city (
        ID INT AUTO_INCREMENT PRIMARY KEY,
